@@ -34,7 +34,9 @@ public class AssertionModeTest {
         Configuration.assertionMode = AssertionMode.SOFT;
         Selenide.open("https://ya.ru");
 
-        // Выпадет ошибка на 'click'
+        // Выведет 2 ошибки:
+        // 'shouldBe' (Element not found)
+        // 'click' (Element not intercepted)
         Selenide.$x(".//input[@area-label='test']")
                 .shouldBe(Condition.exist)
                 .click();
