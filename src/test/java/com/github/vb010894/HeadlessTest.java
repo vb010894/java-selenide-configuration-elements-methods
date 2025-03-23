@@ -5,10 +5,9 @@ import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-/// Тесты Capabilities
-public class ChromeCapabilitiesTest {
+/// Тесты headless
+public class HeadlessTest {
 
     /// Настройка драйвера
     @BeforeAll
@@ -16,20 +15,15 @@ public class ChromeCapabilitiesTest {
         WebDriverManager.chromedriver().setup();
         Configuration.baseUrl = "https://dzen.ru";
         Configuration.browser = "chrome";
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--force-dark-mode");
-        Configuration.browserCapabilities = options;
+        Configuration.headless = true;
     }
 
-    /// Тест открытия Chrome в темной теме\
-    /// с помощью capabilities
+    /// Тест открытия Chrome в режиме headless
     @Test
     public void testWithChrome() {
-
         Selenide.open("/id/65d7431f1759d9595653fed1");
         // Оставил для точки останова
         System.out.println("opened");
         Selenide.closeWebDriver();
     }
-
 }

@@ -5,9 +5,10 @@ import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-/// Тесты BrowserPosition
-public class ChromeBrowserPositionTest {
+/// Тесты Capabilities
+public class CapabilitiesTest {
 
     /// Настройка драйвера
     @BeforeAll
@@ -15,16 +16,20 @@ public class ChromeBrowserPositionTest {
         WebDriverManager.chromedriver().setup();
         Configuration.baseUrl = "https://dzen.ru";
         Configuration.browser = "chrome";
-        Configuration.browserPosition = "10x10";
-        Configuration.browserSize = "800x600";
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--force-dark-mode");
+        Configuration.browserCapabilities = options;
     }
 
-    /// Тест открытия Chrome c заданным размером
+    /// Тест открытия Chrome в темной теме\
+    /// с помощью capabilities
     @Test
     public void testWithChrome() {
+
         Selenide.open("/id/65d7431f1759d9595653fed1");
         // Оставил для точки останова
         System.out.println("opened");
         Selenide.closeWebDriver();
     }
+
 }
