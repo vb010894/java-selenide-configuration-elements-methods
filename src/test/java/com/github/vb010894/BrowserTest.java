@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /// Тесты открытия различных браузеров и версий
-public class BrowserAndVersionTest {
+public class BrowserTest {
 
     /// Настройка драйвера
     @BeforeAll
